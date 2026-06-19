@@ -1,7 +1,7 @@
 # 🌤️ WeatherNow — Weather Application
 
 🔗 **Live Demo:** [weather-app-mocha-seven-13.vercel.app](https://weather-app-mocha-seven-13.vercel.app/)
-📂 **GitHub Repository:** [github.com/pra369/week4-weather-app](https://github.com/pra369/week4-weather-app)
+📂 **GitHub Repository:** [github.com/pra369/weather-app](https://github.com/pra369/weather-app)
 
 ---
 
