@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WeatherNow – Real-Time Weather App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="weather-icons.css" />
+  <link rel="stylesheet" href="responsive.css" />
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="logo">Weather<span>Now</span></div>
+    <div class="unit-toggle">
+      <button class="unit-btn active" id="btnC" onclick="setUnit('C')">°C</button>
+      <button class="unit-btn" id="btnF" onclick="setUnit('F')">°F</button>
+    </div>
+  </header>
+
+  <div class="search-wrap">
+    <input class="search-input" id="searchInput" type="text"
+      placeholder="Search city, e.g. Mumbai, London…"
+      autocomplete="off" oninput="onSearchInput()" onkeydown="onSearchKey(event)" />
+    <button class="search-btn" onclick="searchCity()" aria-label="Search">
+      <svg viewBox="0 0 24 24"><path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" stroke="#0d1117" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>
+    </button>
+    <div class="autocomplete-list" id="autoList"></div>
+  </div>
+
+  <button class="loc-btn" onclick="useLocation()">📍 Use my location</button>
+
+  <div class="favorites-section" id="favSection" style="display:none">
+    <div class="section-title">Saved Cities</div>
+    <div class="fav-list" id="favList"></div>
+  </div>
+
+  <div class="loading-state" id="loadingState">
+    <div class="spinner"></div>
+    <p style="color:var(--muted)">Fetching weather data…</p>
+  </div>
+
+  <div class="error-state" id="errorState">
+    <div class="error-icon">⚠️</div>
+    <p class="error-msg" id="errorMsg">Something went wrong.</p>
+    <button class="retry-btn" onclick="retryLast()">Try Again</button>
+  </div>
+
+  <div class="empty-state show" id="emptyState">
+    <div class="big">🌤️</div>
+    <p>Search a city above to see live weather.</p>
+  </div>
+
+  <div class="weather-main" id="weatherMain">
+    <div class="current-card">
+      <div>
+        <div class="city-name" id="cityName">–</div>
+        <div class="update-time" id="updateTime">–</div>
+        <div class="temp-big" id="tempBig">–</div>
+        <div class="feels" id="feelsLike">–</div>
+        <div class="condition-label" id="conditionLabel">–</div>
+        <div class="stats-row">
+          <div class="stat"><span class="stat-label">Humidity</span><span class="stat-val" id="humidity">–</span></div>
+          <div class="stat"><span class="stat-label">Wind</span><span class="stat-val" id="wind">–</span></div>
+          <div class="stat"><span class="stat-label">Pressure</span><span class="stat-val" id="pressure">–</span></div>
+          <div class="stat"><span class="stat-label">Visibility</span><span class="stat-val" id="visibility">–</span></div>
+        </div>
+      </div>
+      <div style="text-align:center">
+        <div class="weather-emoji" id="weatherEmoji">🌤️</div>
+        <button class="add-fav-btn" id="favBtn" onclick="toggleFavorite()">+ Save city</button>
+      </div>
+    </div>
+
+    <div class="section-title">5-Day Forecast</div>
+    <div class="forecast-grid" id="forecastGrid"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="config.js"></script>
+<script src="storage.js"></script>
+<script src="weatherService.js"></script>
+<script src="ui.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

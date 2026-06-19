@@ -1,0 +1,26 @@
+/* Tablet */
+@media (max-width: 768px) {
+  .app { padding: 1.5rem 1rem 3rem; }
+  .current-card { grid-template-columns: 1fr; }
+  .temp-big { font-size: 4rem; }
+  .forecast-grid { gap: .5rem; }
+  .forecast-card { padding: .75rem .5rem; }
+  .fc-icon { font-size: 1.4rem; }
+  .stats-row { gap: 1rem; }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .temp-big { font-size: 3.5rem; }
+  .forecast-grid { grid-template-columns: repeat(3, 1fr); }
+  .forecast-grid .forecast-card:nth-child(n+4) { display: none; }
+  .city-name { font-size: 1.3rem; }
+  .toast { bottom: 1rem; right: 1rem; left: 1rem; }
+}
+
+/* Small mobile */
+@media (max-width: 380px) {
+  .temp-big { font-size: 3rem; }
+  .stat-val { font-size: .85rem; }
+}
